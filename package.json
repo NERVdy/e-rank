@@ -1,0 +1,22 @@
+{
+  "name": "e-rank",
+  "version": "1.0.0",
+  "description": "e-hentai rank",
+  "main": "main.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/NERVdy/e-rank.git"
+  },
+  "keywords": [
+    "e-hentai"
+  ],
+  "author": "nervdy",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/NERVdy/e-rank/issues"
+  },
+  "homepage": "https://github.com/NERVdy/e-rank#readme"
+}
