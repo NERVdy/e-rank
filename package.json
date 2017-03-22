@@ -4,7 +4,7 @@
   "description": "e-hentai rank",
   "main": "main.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "start": "node main"
   },
   "repository": {
     "type": "git",
@@ -18,5 +18,9 @@
   "bugs": {
     "url": "https://github.com/NERVdy/e-rank/issues"
   },
-  "homepage": "https://github.com/NERVdy/e-rank#readme"
+  "homepage": "https://github.com/NERVdy/e-rank#readme",
+  "devDependencies": {
+    "cheerio": "^0.22.0",
+    "express": "^4.15.2"
+  }
 }
