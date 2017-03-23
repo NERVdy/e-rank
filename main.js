@@ -2,7 +2,7 @@ const https = require('https');
 const cheerio = require('cheerio');
 const fork = require('child_process').fork;
 
-let server = fork(`${__dirname}/server/server.js`)
+let server = fork(`${__dirname}/server/server.js`);
 
 
 https.get('https://github.com/NERVdy?tab=stars', (res) => {
