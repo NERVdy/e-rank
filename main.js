@@ -1,7 +1,11 @@
 const https = require('https');
 const cheerio = require('cheerio');
+const fork = require('child_process').fork;
 
-https.get('https://github.com/cheeriojs/cheerio', (res) => {
+let server = fork(`${__dirname}/server/server.js`)
+
+
+https.get('https://github.com/NERVdy?tab=stars', (res) => {
 
 	let rowData = '';
 	let $ = null;
@@ -9,18 +13,25 @@ https.get('https://github.com/cheeriojs/cheerio', (res) => {
 
 	res.on('data',(chunk) => {
 		rowData += chunk;
-		console.log(i++);
 	});
 
 	res.on('end', () => {
 		$ = cheerio.load(rowData.toString());
-		console.log($('.js-toggler-container').html());
-		// let repoInfo = {
-		// 	star: $('.starring-container a').html().trim(),
-		// 	fork: $('.pagehead-actions li:last-child a').html().trim(),
-		// 	watch: $('.pagehead-actions li:first-child a').html().trim()
-		// };
-		// console.log(`this repo star: ${repoInfo.star}, fork: ${repoInfo.fork}, watch: ${repoInfo.watch}`);
+		let userInfo = {
+			userName: $('#js-pjax-container .js-user-profile-sticky-fields .vcard-username').html().trim(),
+			stars: []
+		};
+
+		let starRepo = $('.js-repo-filter .width-full');
+		starRepo.each(function(i){
+			userInfo.stars.push({
+				repoName: $(this).find('div.d-inline-block a').text().trim(),
+				star: $(this).find('div.text-gray a[aria-label="Stargazers"]').text().trim()
+			});
+		});
+
+		server.send(userInfo);
+		console.log('send message');
 	})
 
 }).on('error', (e) => {

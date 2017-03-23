@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>index</title>
+	<link href="http://cdn.bootcss.com/bootstrap/4.0.0-alpha.6/css/bootstrap.css" rel="stylesheet">
+</head>
+<body>
+	<div class="container">
+		<table class="table table-bordered table-hover" id="table">
+			<tr>
+				<th id="userName" colspan="5" style="text-align: center;"></th>
+			</tr>
+		</table>
+	</div>
+	<script type="text/javascript">
+		var data;
+		function getData(result){
+			data = result;
+			userName.innerHTML = data.userName;
+
+			var html = '<tr>';
+			var index = 0;
+			data.stars.forEach(function(item){
+				index++;
+				html += `<td>${item.repoName}<br>${item.star}</td>`;
+				if(index%5 == 0){
+					html += '</tr><tr>';
+				}
+			})
+			html += '</tr>';
+			table.firstElementChild.innerHTML = table.firstElementChild.innerHTML += html;
+		}
+
+
+
+	</script>
+	<script type="text/javascript" src="http://localhost:3000/user?callback=getData"></script>
+</body>
+</html>
