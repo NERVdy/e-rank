@@ -5,7 +5,7 @@ const fork = require('child_process').fork;
 let server = fork(`${__dirname}/server/server.js`);
 
 
-https.get('https://github.com/NERVdy?tab=stars', (res) => {
+https.get('http://huaban.com/favorite/anime', (res) => {
 
 	let rowData = '';
 	let $ = null;

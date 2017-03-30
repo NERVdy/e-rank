@@ -8,7 +8,7 @@ process.on('message',(m) => {
 })
 
 
-app.use(express.static('frontend'));
+app.use(express.static('./source'));
 
 app.get('/hello', function(req, res){
 	res.send('Hello World!');
